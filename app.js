@@ -2,6 +2,7 @@ const express = require('express')
 const app = express()
 
 app.get('/', (req, res) => {
+    console.log('Hit the home');
     res.status(200).end('The Home Page')
 })
 
