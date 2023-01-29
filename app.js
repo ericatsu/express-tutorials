@@ -1,18 +1,15 @@
 const express = require('express')
-const app = express()
+const app = express();
+
 
 app.get('/', (req, res) => {
-    console.log('Hit the home');
-    res.status(200).end('The Home Page')
-})
-
-app.get('/about', (req, res) => {
-    res.status(200).end('The About Page')
+  res.end('Home Page')
 })
 
 app.all('*', (req, res) => {
-    res.status(404).end('<h1>Page Not Found</h1>')
+   res.status(404).send('Error page')
 })
+
 app.listen(5000, () => {
-    console.log('Server listening on 5000');
+    console.log("Listening on port 5000...");
 })
