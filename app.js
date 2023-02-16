@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 
 app.get('/', (req, res) => {
-    res.json([{name: 'Eric'}, {name: 'Atsu'}])
+    res.json([{name: 'Eric'}, {name: 'Atsu z'}])
 })
 
 app.listen(5000, () => {
