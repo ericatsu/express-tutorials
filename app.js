@@ -1,8 +1,9 @@
 const express = require('express');
 const app = express();
+const {products} = require('./data')
 
 app.get('/', (req, res) => {
-    res.json([{name: 'Eric'}, {name: 'Atsu z'}])
+    res.send('<h1>HomePage</h1> <a href="./api/products"> Products </a>')
 })
 
 app.listen(5000, () => {
