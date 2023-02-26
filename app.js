@@ -25,13 +25,18 @@ app.get('/api/products/:productID', (req, res) => {
     res.json(singleProduct)
 })
 
-app.get('/api/products/;productID/reviews/;reviewID', (req, res) => {
-    const {reviewID} = req.params;
-    const productReview = products.find((review) => review.id === Number(reviewID))
-    console.log(req.params);
-    
-    res.send(productReview)
-})
+app.get('/api/products/:productID/reviews/:reviewID', (req, res) => {
+    const { productID, reviewID } = req.params;
+    const product = products.find((product) => product.id === Number(productID));
+    if (!product) {
+        return res.status(404).send('Product not found');
+    }
+    const review = product.reviews.find((review) => review.id === Number(reviewID));
+    if (!review) {
+        return res.status(404).send('Review not found');
+    }
+    res.json(review);
+});
 
 app.listen(5000, () => {
     console.log('Port 5000 is running');
