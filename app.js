@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express();
-const {products} = require('./data')
+const { products } = require('./data')
 
 app.get('/', (req, res) => {
     res.send('<h1>HomePage</h1> <a href="/api/products"> Products </a>')
@@ -8,15 +8,15 @@ app.get('/', (req, res) => {
 
 app.get('/api/products', (req, res) => {
     const newProducts = products.map((product) => {
-        const {id, name, image} = product;
-        return {id, name, image}
+        const { id, name, image } = product;
+        return { id, name, image }
     });
 
     res.json(newProducts)
 })
 
 app.get('/api/products/:productID', (req, res) => {
-    const {productID} = req.params;
+    const { productID } = req.params;
     const singleProduct = products.find((product) => product.id === Number(productID))
     if (!singleProduct) {
         res.send(404).status('Product does not exit')
