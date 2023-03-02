@@ -4,7 +4,7 @@ const { products } = require('./data')
 
 app.get('/', (req, res) => {
     res.send('<h1>HomePage</h1> <a href="/api/products"> Products </a>')
-})
+});
 
 app.get('/api/products', (req, res) => {
     const newProducts = products.map((product) => {
@@ -13,7 +13,7 @@ app.get('/api/products', (req, res) => {
     });
 
     res.json(newProducts)
-})
+});
 
 app.get('/api/products/:productID', (req, res) => {
     const { productID } = req.params;
@@ -23,7 +23,7 @@ app.get('/api/products/:productID', (req, res) => {
     }
     console.log(singleProduct);
     res.json(singleProduct)
-})
+});
 
 app.get('/api/products/:productID/reviews/:reviewID', (req, res) => {
     const { productID, reviewID } = req.params;
@@ -40,4 +40,4 @@ app.get('/api/products/:productID/reviews/:reviewID', (req, res) => {
 
 app.listen(5000, () => {
     console.log('Port 5000 is running');
-})
+});
