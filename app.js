@@ -1,3 +1,4 @@
+const { query } = require('express');
 const express = require('express');
 const app = express();
 const { products } = require('./data')
@@ -37,6 +38,11 @@ app.get('/api/products/:productID/reviews/:reviewID', (req, res) => {
     }
     res.json(review);
 });
+
+app.get('/api/v1/query', (req,res) => {
+    console.log(req.query);
+    res.send("Hello World")
+})
 
 app.listen(5000, () => {
     console.log('Port 5000 is running');
